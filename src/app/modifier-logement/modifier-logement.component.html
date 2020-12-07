@@ -1,0 +1,131 @@
+<br>
+
+<div class="container" style="padding-left: 20%;">
+
+    <form #f="ngForm">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2">
+                    <label>reference:</label>
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="text" name="id" [(ngModel)]="logement.id" #id="ngModel" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2">
+                    <label>adresse:</label>
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="text" name="title" [(ngModel)]="logement.adresse"
+                        #adresse="ngModel" required minlength="5">
+                    <div *ngIf="adresse.invalid && adresse.touched">
+                        <small class="text-danger" *ngIf="adresse.errors?.required">obligatoire*</small>
+                        <small class="text-danger" *ngIf="adresse.errors?.minlength">minimum 5 lettres</small>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2">
+                    <label>gouvernorat:</label>
+                </div>
+                <div class="col-5">
+                    <select [(ngModel)]="logement.gouvernorat" name="gouvernorat" #gouvernorat="ngModel" id="inputState"
+                        class="form-control" required>
+                        <option selected disabled>choisir</option>
+                        <option>tunis</option>
+                        <option>Ben Arous</option>
+                        <option>Ben Arous</option>
+                        <option>Bizerte</option>
+                        <option>Bizerte</option>
+                        <option>Gafsa</option>
+                        <option>Jendouba</option>
+                        <option>Kairouan</option>
+                        <option>Kasserine</option>
+                        <option>Kébili</option>
+                        <option>Le Kef</option>
+                        <option>Mahdia</option>
+                        <option>La Manouba</option>
+                        <option>Médenine</option>
+                        <option>Monastir</option>
+                        <option>Nabeul</option>
+                        <option>Sfax</option>
+                        <option>Sidi Bouzid</option>
+                        <option>Siliana</option>
+                        <option>Sousse</option>
+                        <option>Tataouine</option>
+                        <option>Tozeur</option>
+                        <option>Zaghouan</option>
+                    </select>
+                    <div *ngIf="gouvernorat.errors?.required && gouvernorat.touched">
+                        <div class="text-danger">il faut indiquer un gouvernorat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2">
+                    <label>type:</label>
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="text" name="price" [(ngModel)]="logement.type" #type="ngModel"
+                        required pattern="s[+][0-9]" placeholder="Ex =s+2">
+                    <div *ngIf="type.invalid && type.touched">
+                        <div class="text-danger">Ex =s+2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2">
+                    <label>description :</label>
+                </div>
+                <div class="col-5">
+                    <textarea class="form-control" type="text" name="description" id="description"
+                        #description="ngModel" [(ngModel)]="logement.description" required></textarea>
+                    <div *ngIf="description.invalid && description.touched">
+                        <div class="text-danger">obligatoire*</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-2">
+                    <label>prix/mois:</label>
+                </div>
+                <div class="col-5">
+                    <input class="form-control" type="number" name="prix" [(ngModel)]="logement.prix" #prix="ngModel"
+                        required pattern="[0-9]*">
+                    <div role="alert" *ngIf="prix.invalid && prix.touched">
+                        <div *ngIf="prix.errors?.required" class="text-danger">obligatoire*</div>
+                        <div *ngIf="prix.errors?.pattern" class="text-danger">le prix doit étre positif</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <button class="btn btn-success" [disabled]="f.invalid"
+                        (click)="modifier(logement,logement.id)">modifier</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+<h3>modifier votre localistation</h3>
+<app-map (requestedLng)="affecterLng($event)" (requestedLat)="affecterLat($event)" [lng]="logement.lng" [lat]="logement.lat" ></app-map>
+</div>
+
+
+

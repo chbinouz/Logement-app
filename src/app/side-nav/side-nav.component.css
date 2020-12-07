@@ -1,0 +1,9 @@
+.structure {
+  width: 15vw;
+  height: 100vh;
+  border: 1px solid black;
+}
+
+.button {
+  width: 100%;
+}

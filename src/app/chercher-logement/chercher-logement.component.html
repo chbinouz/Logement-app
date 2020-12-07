@@ -1,0 +1,155 @@
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>recherche multicritére</h3>
+            <br>
+            <form [formGroup]="logementForm">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="id">reference:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="number" name="reference" id="reference"
+                                formControlName="reference" [(ngModel)]="logement.id">
+                            <div *ngIf="reference.invalid && reference.touched">
+                                <small class="text-danger">obligatoire*</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="title">adresse:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="text" name="adresse" id="adresse"
+                                formControlName="adresse" [(ngModel)]="logement.adresse">
+                            <div *ngIf="adresse.invalid && adresse.touched">
+                                <small class="text-danger" *ngIf="adresse.errors?.required">required</small>
+                                <small class="text-danger" *ngIf="adresse.errors?.minlength">minlength 5</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="quantity">gouvernorat:</label>
+                        </div>
+                        <div class="col-8">
+                            <select [(ngModel)]="logement.gouvernorat" id="inputState" class="form-control"
+                                formControlName="gouvernorat">
+                                <option selected disabled>choisir</option>
+                                <option>  </option>
+                                <option>tunis</option>
+                                <option>Ben Arous</option>
+                                <option>Ben Arous</option> sq
+                                <option>Bizerte</option>
+                                <option>Bizerte</option>
+                                <option>Gafsa</option>
+                                <option>Jendouba</option>
+                                <option>Kairouan</option>
+                                <option>Kasserine</option>
+                                <option>Kébili</option>
+                                <option>Le Kef</option>
+                                <option>Mahdia</option>
+                                <option>La Manouba</option>
+                                <option>Médenine</option>
+                                <option>Monastir</option>
+                                <option>Nabeul</option>
+                                <option>Sfax</option>
+                                <option>Sidi Bouzid</option>
+                                <option>Siliana</option>
+                                <option>Sousse</option>
+                                <option>Tataouine</option>
+                                <option>Tozeur</option>
+                                <option>Zaghouan</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="price">type:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="text" name="type" id="type" formControlName="type"
+                                [(ngModel)]="logement.type " placeholder="Ex: s+2">
+                            <div *ngIf="type.invalid && type.touched">
+                                <small class="text-danger">Exemple S+3</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="title">prix/mois:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="number" name="prix" id="prix" formControlName="prix"
+                                [(ngModel)]="logement.prix" >
+                            <div *ngIf="prix.invalid && prix.touched">
+                                <small *ngIf="prix.errors?.required" class="text-danger">required</small>
+                                <small *ngIf="prix.errors?.pattern" class="text-danger">le prix doit étre
+                                    positif</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-success" (click)="chercher()"
+                                [disabled]="logementForm.invalid">Chercher</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <input type="text" name="aa" id="aa" (keyup)="onKey($event)">
+            {{ch}}
+        </div>
+        <div class="col-7">
+            <div *ngIf="display">
+                <div class="alert alert-warning" role="alert" *ngIf="list.length==0">
+                    la liste est vide 
+                  </div>
+                
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">reference</th>
+                            <th scope="col">adresse</th>
+                            <th scope="col">gouvernorat</th>
+                            <th scope="col">type</th>
+                            <th scope="col">description</th>
+                            <th scope="col">prix/mois</th>
+
+                
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let log of list">
+                            <ng-container>
+                                <tr>
+                                    <th scope="row">{{log.id}}</th>
+                                    <th scope="row">{{log.adresse}}</th>
+                                    <th scope="row">{{log.gouvernorat}}</th>
+                                    <th scope="row">{{log.type}}</th>
+                                    <th scope="row">{{log.description}}</th>
+                                    <th scope="row">{{log.prix}} dt</th>
+                                </tr>
+                            </ng-container>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

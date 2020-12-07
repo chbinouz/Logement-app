@@ -1,0 +1,141 @@
+<br>
+<div class="container"></div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-7 col-sm-12 ">
+            <form [formGroup]="logementForm">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="id">reference:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="number" name="reference" id="reference"
+                                formControlName="reference" [(ngModel)]="logement.id">
+                            <div *ngIf="reference.invalid && reference.touched">
+                                <small class="text-danger">obligatoire*</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="title">adresse:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="text" name="adresse" id="adresse"
+                                formControlName="adresse" [(ngModel)]="logement.adresse">
+                            <div *ngIf="adresse.invalid && adresse.touched">
+                                <small class="text-danger" *ngIf="adresse.errors?.required">required</small>
+                                <small class="text-danger" *ngIf="adresse.errors?.minlength">minlength 5</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="quantity">gouvernorat:</label>
+                        </div>
+                        <div class="col-8">
+                            <select [(ngModel)]="logement.gouvernorat" id="inputState" class="form-control"
+                                formControlName="gouvernorat">
+                                <option selected disabled>choisir</option>
+                                <option>tunis</option>
+                                <option>Ben Arous</option>
+                                <option>Ben Arous</option> sq
+                                <option>Bizerte</option>
+                                <option>Bizerte</option>
+                                <option>Gafsa</option>
+                                <option>Jendouba</option>
+                                <option>Kairouan</option>
+                                <option>Kasserine</option>
+                                <option>Kébili</option>
+                                <option>Le Kef</option>
+                                <option>Mahdia</option>
+                                <option>La Manouba</option>
+                                <option>Médenine</option>
+                                <option>Monastir</option>
+                                <option>Nabeul</option>
+                                <option>Sfax</option>
+                                <option>Sidi Bouzid</option>
+                                <option>Siliana</option>
+                                <option>Sousse</option>
+                                <option>Tataouine</option>
+                                <option>Tozeur</option>
+                                <option>Zaghouan</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="price">type:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="text" name="type" id="type" formControlName="type"
+                                [(ngModel)]="logement.type " placeholder="Ex: s+2">
+                            <div *ngIf="type.invalid && type.touched">
+                                <small class="text-danger">Exemple S+3</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="title">description:</label>
+                        </div>
+                        <div class="col-8">
+                            <textarea class="form-control" type="text" name="description" id="description"
+                                formControlName="description" [(ngModel)]="logement.description"></textarea>
+                            <div *ngIf="description.invalid && description.touched">
+                                <small class="text-danger">required</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <label for="title">prix/mois:</label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control" type="number" name="prix" id="prix" formControlName="prix"
+                                [(ngModel)]="logement.prix">
+                            <div *ngIf="prix.invalid && prix.touched">
+                                <small *ngIf="prix.errors?.required" class="text-danger">required</small>
+                                <small *ngIf="prix.errors?.pattern" class="text-danger">le prix doit étre
+                                    positif</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-success" (click)="submit()"
+                                [disabled]="logementForm.invalid || activate==false">Ajouter</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-lg-4 col-sm-12">
+            <div class="alert alert-warning" role="alert" [hidden]="list.length!=0">
+                la liste est vide
+            </div>
+            <div *ngFor="let log of list">
+                <app-list-logement (requested)="suppLogement($event)" [logement]="log"></app-list-logement>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<div (click)="touched()">
+<h3>pinger votre emplacement</h3>
+<app-map (requestedLng)="affecterLng($event)" (requestedLat)="affecterLat($event)"   ></app-map>
+</div>

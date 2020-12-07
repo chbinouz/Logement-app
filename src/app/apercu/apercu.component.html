@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6 mt-5">
+            <div class="ml-5">
+                <div class="row">
+                    <div class="col-5">
+                        <h5>réference :</h5>
+                    </div>
+                    <div class="col-7">
+                        <h5>{{logement.id}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h5>adresse :</h5>
+                    </div>
+                    <div class="col-7">
+                        <h5>{{logement.adresse}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h5>gouvernorat :</h5>
+                    </div>
+                    <div class="col-7">
+                        <h5>{{logement.gouvernorat}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h5>type :</h5>
+                    </div>
+                    <div class="col-7">
+                        <h5>{{logement.id}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h5>description :</h5>
+                    </div>
+                    <div class="col-7">
+                        <h5>{{logement.description}}</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-5">
+                        <h5>prix :</h5>
+                    </div>
+                    <div class="col-7">
+                        <h5>{{logement.prix}} dt</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <h6>localisation:</h6>
+            <app-map [lng]="logement.lng" [lat]="logement.lat"></app-map>
+        </div>
+    </div>
+</div>

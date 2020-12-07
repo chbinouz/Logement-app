@@ -1,0 +1,67 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <div class="row">
+                <div class="col-5">
+                    <H5>filtrer par prix</H5>
+                </div>
+                <div class="col-7">
+                    <input class="form-control" type="text" name="filter" id="filter" [(ngModel)]="filter">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="alert alert-warning" role="alert" [hidden]="list.length!=0">
+    la liste est vide 
+  </div>
+
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th scope="col">reference</th>
+            <th scope="col">adresse</th>
+            <th scope="col">gouvernorat</th>
+            <th scope="col">type</th>
+            <th scope="col">description</th>
+            <th scope="col">prix/mois</th>
+            <th scope="col">aperçu</th>
+            <th scope="col">modifier</th>
+            <th scope="col">supprimer</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let log of list">
+            <ng-container>
+                <tr *ngIf="toInt(filter)>=log.prix && filter!=''">
+                    <th scope="row">{{log.id}}</th>
+                    <th scope="row">{{log.adresse}}</th>
+                    <th scope="row">{{log.gouvernorat}}</th>
+                    <th scope="row">{{log.type}}</th>
+                    <th scope="row">{{log.description}}</th>
+                    <th scope="row">{{log.prix}} dt</th>
+                    <th scope="row"><button class="btn btn-info btn-lg" [routerLink]="['/apercu-logement',log.id]">aperçu</button></th>
+                    <th scope="row"><button class="btn btn-warning btn-lg" [routerLink]="['/modifier-logement',log.id]">modifier</button></th>
+                    <th scope="row"><button class="btn btn-danger btn-lg" (click)="supprimer(log)">Supprimer</button>
+                    </th>
+                </tr>
+                <tr *ngIf=" filter==''">
+                    <th scope=" row">{{log.id}}</th>
+                    <th scope="row">{{log.adresse}}</th>
+                    <th scope="row">{{log.gouvernorat}}</th>
+                    <th scope="row">{{log.type}}</th>
+                    <th scope="row">{{log.description}}</th>
+                    <th scope="row">{{log.prix}} dt</th>
+                    <th scope="row"><button class="btn btn-info btn-lg" [routerLink]="['/apercu-logement',log.id]">aperçu</button></th>
+                    <th scope="row"><button class="btn btn-warning btn-lg" [routerLink]="['/modifier-logement',log.id]">modifier</button></th>
+                    <th scope="row"><button class="btn btn-danger btn-lg" (click)="supprimer(log)">Supprimer</button>
+                    </th>
+                </tr>
+            </ng-container>
+        </ng-container>
+    </tbody>
+</table>
