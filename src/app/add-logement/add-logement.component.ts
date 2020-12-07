@@ -21,7 +21,7 @@ export class AddLogementComponent implements OnInit {
       reference:["",[Validators.required]],
       adresse:["",[Validators.required,Validators.minLength(5)]],
       gouvernorat:["",[Validators.required]],
-      type:["",[Validators.required,Validators.pattern("s[+][0-9]*")]],
+      type:["",[Validators.required,Validators.pattern("s[+][0-9]")]],
       description:["",Validators.required],
       prix:["",[Validators.required,Validators.pattern("[0-9]*")]]
     });
