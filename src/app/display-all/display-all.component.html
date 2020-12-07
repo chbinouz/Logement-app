@@ -16,8 +16,8 @@
 <br>
 
 <div class="alert alert-warning" role="alert" [hidden]="list.length!=0">
-    la liste est vide 
-  </div>
+    la liste est vide
+</div>
 
 <table class="table">
     <thead class="thead-light">
@@ -44,8 +44,10 @@
                     <th scope="row">{{log.type}}</th>
                     <th scope="row">{{log.description}}</th>
                     <th scope="row">{{log.prix}} dt</th>
-                    <th scope="row"><button class="btn btn-info btn-lg" [routerLink]="['/apercu-logement',log.id]">aperçu</button></th>
-                    <th scope="row"><button class="btn btn-warning btn-lg" [routerLink]="['/modifier-logement',log.id]">modifier</button></th>
+                    <th scope="row"><button class="btn btn-info btn-lg"
+                            [routerLink]="['/offres/apercu-logement',log.id]">aperçu</button></th>
+                    <th scope="row"><button class="btn btn-warning btn-lg"
+                            [routerLink]="['/offres/modifier-logement',log.id]">modifier</button></th>
                     <th scope="row"><button class="btn btn-danger btn-lg" (click)="supprimer(log)">Supprimer</button>
                     </th>
                 </tr>
@@ -56,8 +58,10 @@
                     <th scope="row">{{log.type}}</th>
                     <th scope="row">{{log.description}}</th>
                     <th scope="row">{{log.prix}} dt</th>
-                    <th scope="row"><button class="btn btn-info btn-lg" [routerLink]="['/offres/apercu-logement',log.id]">aperçu</button></th>
-                    <th scope="row"><button class="btn btn-warning btn-lg" [routerLink]="['/offres/modifier-logement',log.id]">modifier</button></th>
+                    <th scope="row"><button class="btn btn-info btn-lg"
+                            [routerLink]="['/offres/apercu-logement',log.id]">aperçu</button></th>
+                    <th scope="row"><button class="btn btn-warning btn-lg"
+                            [routerLink]="['/offres/modifier-logement',log.id]">modifier</button></th>
                     <th scope="row"><button class="btn btn-danger btn-lg" (click)="supprimer(log)">Supprimer</button>
                     </th>
                 </tr>
