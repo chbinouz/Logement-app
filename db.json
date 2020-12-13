@@ -1,46 +1,5 @@
 {
-  "Logement": [
-    {
-      "id": 1010,
-      "adresse": "rue de carthage",
-      "gouvernorat": "Bizerte",
-      "type": "s+2",
-      "description": "very nice",
-      "prix": 450,
-      "lat": 37.25655160475817,
-      "lng": 9.884570688749733
-    },
-    {
-      "id": 166,
-      "adresse": "47 rue de marseille mornaguia",
-      "gouvernorat": "La Manouba",
-      "type": "s+3",
-      "description": "spacieuse",
-      "prix": 600,
-      "lat": 36.749635850488374,
-      "lng": 10.01669009453667
-    },
-    {
-      "id": 1652,
-      "adresse": "ghazela",
-      "gouvernorat": "tunis",
-      "type": "s+3",
-      "description": "kakaka",
-      "prix": 801,
-      "lat": 36.85723600287943,
-      "lng": 10.187369364277316
-    },
-    {
-      "id": 1250,
-      "adresse": "atttt",
-      "gouvernorat": "Ben Arous",
-      "type": "s+3",
-      "description": "ilil",
-      "prix": 120,
-      "lat": 36.856220197576704,
-      "lng": 10.182150646646846
-    }
-  ],
+  "Logement": [],
   "posts": [
     {
       "id": 1,

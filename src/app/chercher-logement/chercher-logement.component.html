@@ -44,7 +44,7 @@
                             <select [(ngModel)]="logement.gouvernorat" id="inputState" class="form-control"
                                 formControlName="gouvernorat">
                                 <option selected disabled>choisir</option>
-                                <option>  </option>
+                                <option> </option>
                                 <option>tunis</option>
                                 <option>Ben Arous</option>
                                 <option>Ben Arous</option> sq
@@ -93,7 +93,7 @@
                         </div>
                         <div class="col-8">
                             <input class="form-control" type="number" name="prix" id="prix" formControlName="prix"
-                                [(ngModel)]="logement.prix" >
+                                [(ngModel)]="logement.prix">
                             <div *ngIf="prix.invalid && prix.touched">
                                 <small *ngIf="prix.errors?.required" class="text-danger">required</small>
                                 <small *ngIf="prix.errors?.pattern" class="text-danger">le prix doit étre
@@ -112,15 +112,13 @@
                 </div>
 
             </form>
-            <input type="text" name="aa" id="aa" (keyup)="onKey($event)">
-            {{ch}}
         </div>
         <div class="col-7">
             <div *ngIf="display">
                 <div class="alert alert-warning" role="alert" *ngIf="list.length==0">
-                    la liste est vide 
-                  </div>
-                
+                    la liste est vide
+                </div>
+
                 <table class="table">
                     <thead class="thead-light">
                         <tr>
@@ -131,7 +129,7 @@
                             <th scope="col">description</th>
                             <th scope="col">prix/mois</th>
 
-                
+
                         </tr>
                     </thead>
                     <tbody>

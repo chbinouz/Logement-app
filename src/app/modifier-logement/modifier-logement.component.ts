@@ -27,7 +27,7 @@ export class ModifierLogementComponent implements OnInit {
     this.logement.lng=lng;
   }
   modifier(logement:Logement,id:number){
-    this.logServ.modifierLogement(logement,id).subscribe(res=>this.router.navigateByUrl("/Afficher-logement"));
+    this.logServ.modifierLogement(logement,id).subscribe(res=>this.router.navigateByUrl("/offres/Afficher-logement"));
     this.logement=new Logement();
   }
 
